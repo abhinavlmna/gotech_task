@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/app/sizeutitls.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Homepage extends StatefulWidget {
@@ -32,8 +33,8 @@ class _HomepageState extends State<Homepage> {
         ),
         leading: Image.asset(
           'assets/images/utube.jpg',
-          height: 50,
-          width: 50,
+          height: 50.v,
+          width: 50.h,
           fit: BoxFit.fill,
         ),
         actions: [
@@ -42,14 +43,14 @@ class _HomepageState extends State<Homepage> {
             color: Colors.white,
           ),
           SizedBox(
-            width: 20,
+            width: 20.h,
           ),
           Icon(
             Icons.notifications,
             color: Colors.white,
           ),
           SizedBox(
-            width: 20,
+            width: 20.h,
           ),
           Icon(
             Icons.search,
@@ -57,38 +58,56 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                width: 390,
-                child: YoutubePlayer(
-                  controller: _controller,
-                  showVideoProgressIndicator: true,
-                  bottomActions: [
-                    CurrentPosition(),
-                    ProgressBar(
-                      isExpanded: true,
-                      colors: ProgressBarColors(
-                          playedColor: Colors.red, handleColor: Colors.red),
-                    ),
-                    RemainingDuration(),
-                    PlaybackSpeedButton(),
-                    FullScreenButton(),
-
-                    // CurrentPosition(),
-                    // PlayPauseButton(),
-                  ],
+      body: SingleChildScrollView(
+        // need to fix the issues while making the video in fullscreen and the issues are appbar and bpttomnavbar
+        child: Column(
+          children: [
+            YoutubePlayer(
+              controller: _controller,
+              showVideoProgressIndicator: true,
+              bottomActions: [
+                CurrentPosition(),
+                ProgressBar(
+                  isExpanded: true,
+                  colors: ProgressBarColors(
+                      playedColor: Colors.red, handleColor: Colors.red),
                 ),
-              ),
-            ],
-          )
-        ],
+                RemainingDuration(),
+                PlaybackSpeedButton(),
+                FullScreenButton(),
+
+                // CurrentPosition(),
+                // PlayPauseButton(),
+              ],
+            )
+          ],
+        ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          // fixedColor: Colors.black,
+          backgroundColor: Colors.black,
+          items: [
+            BottomNavigationBarItem(
+                backgroundColor: Colors.black,
+                icon: Icon(Icons.home_filled),
+                label: 'Home'),
+            BottomNavigationBarItem(
+                backgroundColor: Colors.black,
+                icon: Icon(Icons.theaters),
+                label: 'shorts'),
+            BottomNavigationBarItem(
+                backgroundColor: Colors.black,
+                icon: Icon(Icons.add),
+                label: 'Add'),
+            BottomNavigationBarItem(
+                backgroundColor: Colors.black,
+                icon: Icon(Icons.subscriptions),
+                label: 'subscriptions'),
+            BottomNavigationBarItem(
+                backgroundColor: Colors.black,
+                icon: Icon(Icons.person),
+                label: 'You'),
+          ]),
     );
   }
 }
