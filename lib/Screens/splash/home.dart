@@ -59,7 +59,6 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
       body: SingleChildScrollView(
-        // need to fix the issues while making the video in fullscreen and the issues are appbar and bpttomnavbar
         child: Column(
           children: [
             YoutubePlayer(
