@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:youtube/Screens/nodata.dart';
 import 'package:youtube/app/sizeutitls.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -22,89 +24,164 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.landscapeLeft,
+    //   DeviceOrientation.landscapeRight,
+    // ]);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
+        automaticallyImplyLeading: true,
         title: Text(
-          'YouTube',
+          'Video Player',
           style: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         leading: Image.asset(
-          'assets/images/utube.jpg',
+          'assets/images/logo.png',
           height: 50.v,
           width: 50.h,
           fit: BoxFit.fill,
         ),
         actions: [
-          Icon(
-            Icons.cast,
+          IconButton(
             color: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Nodatapage()),
+              );
+            },
+            icon: Icon(Icons.cast),
           ),
           SizedBox(
-            width: 20.h,
+            width: 10.h,
           ),
-          Icon(
-            Icons.notifications,
+          IconButton(
             color: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Nodatapage()),
+              );
+            },
+            icon: Icon(Icons.notifications),
           ),
           SizedBox(
-            width: 20.h,
+            width: 10.h,
           ),
-          Icon(
-            Icons.search,
+          IconButton(
             color: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Nodatapage()),
+              );
+            },
+            icon: Icon(Icons.search),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              bottomActions: [
-                CurrentPosition(),
-                ProgressBar(
-                  isExpanded: true,
-                  colors: ProgressBarColors(
-                      playedColor: Colors.red, handleColor: Colors.red),
-                ),
-                RemainingDuration(),
-                PlaybackSpeedButton(),
-                FullScreenButton(),
+            Container(
+              height: 330.v,
+              width: double.infinity,
+              child: YoutubePlayer(
+                controller: _controller,
+                showVideoProgressIndicator: true,
+                bottomActions: [
+                  CurrentPosition(),
+                  ProgressBar(
+                    isExpanded: true,
+                    colors: ProgressBarColors(
+                        playedColor: Colors.red, handleColor: Colors.red),
+                  ),
+                  RemainingDuration(),
+                  PlaybackSpeedButton(),
+                  FullScreenButton(),
 
-                // CurrentPosition(),
-                // PlayPauseButton(),
-              ],
+                  // CurrentPosition(),
+                  // PlayPauseButton(),
+                ],
+              ),
             )
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+
           // fixedColor: Colors.black,
           backgroundColor: Colors.black,
           items: [
             BottomNavigationBarItem(
                 backgroundColor: Colors.black,
-                icon: Icon(Icons.home_filled),
+                icon: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nodatapage()),
+                    );
+                  },
+                  icon: Icon(Icons.home),
+                ),
                 label: 'Home'),
             BottomNavigationBarItem(
                 backgroundColor: Colors.black,
-                icon: Icon(Icons.theaters),
+                icon: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nodatapage()),
+                    );
+                  },
+                  icon: Icon(Icons.theaters),
+                ),
                 label: 'shorts'),
             BottomNavigationBarItem(
                 backgroundColor: Colors.black,
-                icon: Icon(Icons.add),
+                icon: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nodatapage()),
+                    );
+                  },
+                  icon: Icon(Icons.add),
+                ),
                 label: 'Add'),
             BottomNavigationBarItem(
                 backgroundColor: Colors.black,
-                icon: Icon(Icons.subscriptions),
+                icon: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nodatapage()),
+                    );
+                  },
+                  icon: Icon(Icons.subscriptions),
+                ),
                 label: 'subscriptions'),
             BottomNavigationBarItem(
                 backgroundColor: Colors.black,
-                icon: Icon(Icons.person),
+                icon: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nodatapage()),
+                    );
+                  },
+                  icon: Icon(Icons.person),
+                ),
                 label: 'You'),
           ]),
     );
